@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,400,500,700|Source+Code+Pro" rel="stylesheet">
+        <link rel="stylesheet" href="/css/app.css">
+    </head>
+    <body>
+        <div class="container m1 p3">
+            <div class="content centered post-content">
+
+                <h1 class="text-centered">Setting up a Virtual Machine</h1>
+                <p class="text-centered text-medium text-sm color-dark-grey">11th February 2015 &bull; Guide</p>
+
+                <div class="divider centered mt-1 mb-3"></div>
+
+                <p>We'll cover three important things:</p>
+<ul>
+<li>VirtualBox</li>
+<li>Vagrant</li>
+<li>Homestead</li>
+</ul>
+<h2>VirtualBox</h2>
+<p>First you'll need VirtualBox, a visuaistion provider. </p>
+<p>Download from <a href="https://www.virtualbox.org/wiki/Downloads">here</a>, Look for VirtualBox X.X.XX for OS X Hosts. Once it is downloaded, follow the GUI to install it.</p>
+<p>Easy!</p>
+<h2>Vagrant</h2>
+<p>Vagrant helps you build and manage development environments really quickly, everything is automatic and allows you to create identical environemnts over and over again on any computer.</p>
+<p>Download from <a href="https://www.vagrantup.com/downloads.html">here</a>. Once downloaded follow the GUI to install.</p>
+<hr />
+<p>Now we have the easy important tools installed we can start setting up an environment.</p>
+<p>There loads of diferent ways to go from here, you could install a plain image of Ubuntu and set it up to install the specific packages you want, but we just want a pretty generic PHP environment.</p>
+<p>Vagrant refers to VMs as Boxes, we want to create a box for our PHP dev.</p>
+<p>That's where homestead comes in, built by the same guy who made <a href="http://laravel.com/">Laravel</a> its a premade vagrant box perfect for all things PHP/Laravel.</p>
+<h2>Homestead</h2>
+<p>Jump into terminal.</p>
+<p>Since installing Vagrant, we now have access to the <code>vagrant</code> command line tool. We can add Homestead box by running the following command.</p>
+<pre><code class="language-bash">vagrant box add laravel/homestead</code></pre>
+<p>This is going to download the homestead box (ubuntu and the packages), so its big and might take a little while. You only have to do this once, even if you have 20 VMs. Vagrant will store this box so you can quickly provision a new box. </p>
+<hr />
+<p>Now it is time to set up a VM and start using it. You will have to do the following for every development environment you create. </p>
+<p>But if you're just going to be building simple applications you can use the same environment for them all.</p>
+<p>Find a safe place on your machine and navigate to it in Terminal (I use <code>~/Developer/Virtual</code>).</p>
+<pre><code class="language-bash">cd ~/Developer/Virtual
+git clone https://github.com/laravel/homestead.git Homestead</code></pre>
+<p>This will pull down the homestead tools. Open Homestead and run the initializing script.</p>
+<pre><code class="language-bash">cd Homestead
+bash init.sh</code></pre>
+<hr />
+<h2>You might have this bit</h2>
+<p>If you have ever used SSH you might have done this, otherwise, do it. Generate an SSH key. This is so you can connect to your VM.</p>
+<pre><code class="language-bash">ssh-keygen -t rsa -C "you@email"</code></pre>
+<p>You can hit enter a few times to use the default settings.</p>
+<hr />
+<h2>Back to Homestead</h2>
+<p>Now we need to configure the Virtual Machine. Set up our sites, domains and folders.</p>
+<p>The file we want to edit is <code>~/.homestead/Homestead.yaml</code> Open <code>~/.homestead</code> in Finder and edit the file in Sublime or..</p>
+<pre><code class="language-bash">nano ~/.homestead/Homestead.yaml</code></pre>
+<h4>Folders</h4>
+<pre><code class="language-yaml">folders:
+    - map: ~/Code
+      to: /home/vagrant/Code</code></pre>
+<p>The first line maps a local folder <code>~/Code</code> to a folder on the VM <code>/home/vagrant/Code</code> Adding multiple folders could look like this. Be careful with your indenting.</p>
+<pre><code class="language-yaml">folders:
+    - map: ~/Developer/MyApplication
+      to: /home/vagrant/MyApplication
+    - map: ~/Developer/WebsiteOneTwoThree
+      to: /home/vagrant/WebsiteOneTwoThree
+    - map: ~/Developer/ClientApp
+      to: /home/vagrant/ClientApp</code></pre>
+<p>Now these folders will sync. If you edit something in <code>~Developer/ClientApp</code> it will update in the VM <code>~/home/vagrant/ClientApp</code> and vice versa.</p>
+<h4>Sites</h4>
+<p>Now we need away to access these folders.</p>
+<pre><code class="language-yaml">sites:
+    - map: homestead.app
+      to: /home/vagrant/Code/Laravel/public</code></pre>
+<p>The first line maps a domain <code>homestead.app</code> to a directory on the VM <code>/home/vagrant/Code/Laravel/public</code>. The same folders we set up before could be sites like this.</p>
+<pre><code class="language-yaml">sites:
+    - map: myapp.local
+      to: /home/vagrant/MyApplication
+    - map: website123.dev
+      to: /home/vagrant/WebsiteOneTwoThree
+    - map: client.app
+      to: /home/vagrant/ClientApp/public</code></pre>
+<p>Be careful setting the VM directory if your application doesn't run in the document root.</p>
+<p>To make these domains work, we need to tell your computer to look for a server on the VM.</p>
+<p>Open up your <code>/etc/hosts</code> file.</p>
+<pre><code class="language-bash">sudo nano /etc/hosts</code></pre>
+<p>And add each domain, pointed to the VM.</p>
+<pre><code class="language-bash">192.168.10.10       myapp.local, website123.dev, client.app</code></pre>
+<h2>Woo!</h2>
+<p>Now it's time to launch the box.</p>
+<p>Navigate back to where we clone the git repo. And tell vagrant to start the VM.</p>
+<pre><code class="language-bash">cd ~/Developer/Virtual/Homestead
+vagrant up</code></pre>
+<p>The first time you run this, it'll take a little time as it sets up all the folders and domains. You'll have to re run this whenever you restart your computer.</p>            </div>
+        </div>
+    </body>
+</html>
