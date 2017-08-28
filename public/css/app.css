@@ -389,6 +389,9 @@ template {
 [hidden] {
   display: none;
 }
+* {
+  box-sizing: border-box;
+}
 body {
   background: #343a40;
   font-family: 'Raleway', sans-serif;
@@ -408,7 +411,7 @@ a.no-underline:hover {
 }
 .container {
   background: #212529;
-  min-height: 100vh;
+  min-height: calc(100vh - 2rem);
 }
 .content {
   width: 90%;

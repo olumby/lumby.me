@@ -8,6 +8,10 @@
 @grey: #ced4da;
 @dark-grey: #868e96;
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     background: @darker-grey;
     font-family: 'Raleway', sans-serif;
@@ -31,7 +35,7 @@ a.no-underline:hover {
 
 .container {
     background: @dark;
-    min-height: 100vh;
+    min-height: calc(~'100vh - 2rem');
 }
 
 .content {
