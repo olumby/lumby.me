@@ -9,8 +9,8 @@
     <div class="mb-3">
         <h3 class="text-xl text-thin">Recent Projects</h3>
         <ul class="list-no-style">
-            <li class="ml-1 mb-05"><a href="https://radars.lumby.me" target="_blank">RadarsVLC</a></li>
-            <li class="ml-1 mb-05"><a href="https://camaras.lumby.me" target="_blank">CamarasVLC</a></li>
+            <li class="ml-1 mb-05"><a href="https://radars.lumby.me" target="_blank">RadarsVLC</a> <span class="color-dark-grey">- where the mobile police radar is today.</span></li>
+            <li class="ml-1 mb-05"><a href="https://camaras.lumby.me" target="_blank">CamarasVLC</a> <span class="color-dark-grey">- view the traffic cameras in and around Valencia.</span></li>
         </ul>
     </div>
 
