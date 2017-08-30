@@ -6,6 +6,9 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,400,500,700|Source+Code+Pro" rel="stylesheet">
         <link rel="stylesheet" href="/css/app.css">
+
+        <title>{{ $page->title }} | Oliver Lumby</title>
+
     </head>
     <body>
         <div class="container m1 p3">

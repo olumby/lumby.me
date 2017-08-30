@@ -6,20 +6,15 @@ author: Oliver Lumby
 date: 2017-07-21
 category: External Guide
 image: ""
-description: "I would like a trial by combat. A dream of Spring. The wolf and the lion. The War of the 5 kings. The rains of castamere."
+description: "I wrote my first article for the DigitalOcean authorship program earlier this year. It covers the basic steps of installing Synapse on Ubuntu."
 ---
 
+I wrote my first article the [DigitalOcean authorship program](https://www.digitalocean.com/community/write-for-digitalocean) earlier this year.
 
-I would like a trial by combat. What is dead may never die. Bastards are born of passion, aren't they? We don't despise them in Dorne. All men must die. You know nothing, Jon Snow. 
+>Matrix is an open standard for decentralized communication. It's a collection of servers and services used for online messaging which speak a standardized API that synchronizes in real time.
 
-Pay the iron price. All men must die. Unbowed, Unbent, Unbroken. And now his watch is ended. All men must die. The Dothraki do things in their own time, for their own reasons. The Dothraki do things in their own time, for their own reasons. You know nothing, Jon Snow. More pigeon pie, please. All men must die. As High as Honor. As High as Honor. Forgive my manners. I don't see many ladies these days. 
+>Matrix uses homeservers to store your account information and chat history. They work in a similar way to how an email client connects to email servers through IMAP/SMTP. Like email, you can either use a Matrix homeserver hosted by somebody else or host your own and be in control of your own information and communications.
 
-Lucky for the ladies. All men must die. Bastards are born of passion, aren't they? We don't despise them in Dorne.
+>By following this guide you will install Synapse, the reference homeserver implementation of Matrix. When you're finished, you will be able to connect to your homeserver via any Matrix client and communicate with others users across other Matrix federated homeservers.
 
-```php
-return [
-    'build' => [
-        'destination' => 'public'
-    ]
-]
-```
+You can read the [full article](https://www.digitalocean.com/community/tutorials/how-to-install-matrix-synapse-on-ubuntu-16-04) over on the DigitalOcean community.
